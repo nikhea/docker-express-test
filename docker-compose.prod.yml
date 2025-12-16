@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  node-app:
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
+      dockerfile: Dockerfile
+      target: prod
+    command: ["node", "index.js"]
+    environment:
+      NODE_ENV: production

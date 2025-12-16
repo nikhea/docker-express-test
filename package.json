@@ -1,0 +1,33 @@
+{
+  "name": "web-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:dev": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build",
+    "docker:prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build",
+    "docker:new": "docker compose up -d --build",
+    "docker:up": "docker compose up -d",
+    "docker:build": "docker compose build",
+    "docker:reup": "docker compose up -d --build --force-recreate",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f node-app",
+    "docker:stop": "docker compose stop",
+    "docker:start": "docker compose start",
+    "docker:restart": "docker compose restart",
+    "docker:rm": "docker compose rm",
+    "docker:sh": "docker compose exec node-app sh",
+    "docker:ps": "docker compose ps",
+    "docker:inspect": "docker inspect $(docker ps -q)",
+    "docker:stats": "docker stats $(docker ps -q)"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

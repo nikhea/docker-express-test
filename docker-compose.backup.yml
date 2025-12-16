@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  node-app:
+    container_name: node-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      PORT: ${PORT}
+    command: ["npm", "run", "dev"]
+    ports:
+      - "${PORT}:${PORT}"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${PORT}/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
+    restart: unless-stopped
